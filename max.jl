@@ -1,4 +1,4 @@
-using JuMP, Ipopt
+using JuMP, Ipopt, Plots
 
 # JuMP model, Ipopt solver
 foo1 = Model(optimizer_with_attributes(Ipopt.Optimizer, "print_level" => 5))
@@ -111,7 +111,6 @@ r2 = value.(r)
 m2 = 1 .- (q2+r2);
 
 # Plots
-using Plots
 t = (1:N) * Δt
 p_plot = plot(t, p1, xlabel = "t", ylabel = "p", label = "full"); plot!(p_plot, t, p2, label = "reduced")
 r_plot = plot(t, r1, xlabel = "t", ylabel = "r", label = "full"); plot!(r_plot, t, r2, label = "reduced")
